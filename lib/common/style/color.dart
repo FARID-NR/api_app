@@ -11,6 +11,9 @@ class AppColor {
   // Scondary Text Color
   static const Color secondaryText = Color(0xFFFFFFFF);
 
+  // Secondary 2 Text Color
+  static const Color secondaryText2 = Color(0xFFBCBCBC);
+
   // Highlight Color
   static const Color accentColor = Color(0xFF8C4303);
 

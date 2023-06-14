@@ -39,8 +39,10 @@ dependencies:
   get: ^4.6.5
   flutter_easyloading: ^3.0.5
   flutter_localization: ^0.1.11
-  flutter_cupertino_localizations: ^1.0.1
   google_fonts: ^4.0.4
+  expandable_text: ^2.3.0
+  flutter_linkify: ^6.0.0
+  flutter_vector_icons: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +70,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/slider.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

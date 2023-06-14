@@ -28,6 +28,7 @@ class _MainNavbarPageState extends State<MainNavbarPage> {
     double displayWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       bottomNavigationBar: Container(
+        margin: EdgeInsets.only(top: 10),
         height: displayWidth * .2,
         decoration: BoxDecoration(
           color: AppColors.primarySecondaryElement,

@@ -1,4 +1,5 @@
 import 'package:api_app/common/style/theme.dart';
+import 'package:api_app/pages/main_navigation/home/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +10,7 @@ import 'common/routes/routes.dart';
 
 Future<void> main() async {
   runApp(const MyApp());
+  Get.put<HomeController>(HomeController());
 }
 
 class MyApp extends StatelessWidget {
