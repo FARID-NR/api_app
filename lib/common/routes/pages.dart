@@ -5,6 +5,7 @@ import 'package:api_app/pages/main_navigation/button_nav/index.dart';
 import 'package:api_app/pages/main_navigation/button_nav/view.dart';
 import 'package:api_app/pages/main_navigation/feed/index.dart';
 import 'package:api_app/pages/main_navigation/home/index.dart';
+import 'package:api_app/pages/main_navigation/messages/chat-room/index.dart';
 import 'package:api_app/pages/main_navigation/messages/index.dart';
 import 'package:api_app/pages/main_navigation/profile/index.dart';
 import 'package:api_app/pages/main_navigation/store/index.dart';
@@ -81,6 +82,13 @@ class AppPages {
       page: () => const ProfilePage(),
       binding: ProfileBinding()
     ),
+
+    // Chat
+    GetPage(
+      name: AppRoutes.Chat,
+      page: () => const ChatRoomPage(),
+      binding: ChatRoomBinding()
+    )
     
   ];
 }

@@ -23,7 +23,11 @@ class AppColors {
 
   static const Color textcolor3 = Color(0xFF444444);
 
+  static const Color textColor4 = Color(0xFF626262);
+
   static const Color secondaryText = Color(0xFF585858);
+
+  static const Color primaryElementStatus = Color.fromARGB(255, 88, 174, 127);
 
 
 
