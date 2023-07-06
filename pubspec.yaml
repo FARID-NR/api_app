@@ -43,6 +43,8 @@ dependencies:
   expandable_text: ^2.3.0
   flutter_linkify: ^6.0.0
   flutter_vector_icons: ^2.0.0
+  cloud_firestore: ^4.8.2
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:

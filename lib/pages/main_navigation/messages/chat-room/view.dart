@@ -87,7 +87,7 @@ class ChatRoomPage extends GetView<ChatRoomController> {
       body: SafeArea(
         child: Stack(
           children: [
-            ChatList(),
+            // ChatList(),
             Positioned(
               bottom: 0.h,
               child: Container(
