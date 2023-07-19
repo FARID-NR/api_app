@@ -1,13 +1,17 @@
+import 'package:api_app/common/middlewares/middlewares.dart';
 import 'package:api_app/common/routes/routes.dart';
 import 'package:api_app/pages/frame/registed/index.dart';
 import 'package:api_app/pages/frame/splashscreen/index.dart';
 import 'package:api_app/pages/main_navigation/button_nav/index.dart';
 import 'package:api_app/pages/main_navigation/button_nav/view.dart';
 import 'package:api_app/pages/main_navigation/feed/index.dart';
+import 'package:api_app/pages/main_navigation/feed/post_feed/index.dart';
+import 'package:api_app/pages/main_navigation/home/detail-konsult/index.dart';
 import 'package:api_app/pages/main_navigation/home/index.dart';
 import 'package:api_app/pages/main_navigation/messages/chat-room/index.dart';
 import 'package:api_app/pages/main_navigation/messages/index.dart';
 import 'package:api_app/pages/main_navigation/profile/index.dart';
+import 'package:api_app/pages/main_navigation/store/detail-produk/index.dart';
 import 'package:api_app/pages/main_navigation/store/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -45,7 +49,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.BtnNav,
       page: () => const MainNavbarPage(),
-      binding: MainNavbarBinding()
+      binding: MainNavbarBinding(),
+      middlewares: [
+        RouteAuthMiddleware(priority: 1)
+      ]
     ),
 
     // Home
@@ -73,7 +80,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.Message,
       page: () => const MessagePage(),
-      binding: MessageBinding()
+      binding: MessageBinding(),
+      middlewares: [
+        RouteAuthMiddleware(priority: 0),
+      ]
     ),
 
     // Profile
@@ -88,7 +98,27 @@ class AppPages {
       name: AppRoutes.Chat,
       page: () => const ChatRoomPage(),
       binding: ChatRoomBinding()
-    )
+    ),
     
+    // Detail Konsultan
+    GetPage(
+      name: AppRoutes.DetailKonsult, 
+      page: () => const DetailKonsultPage(),
+      binding: KonsultasiBinding()
+    ),
+
+    // Detail Produk
+    GetPage(
+      name: AppRoutes.DetailProduk,
+      page: () => const DetailProdukPage(),
+      binding: DetailProdukBinding()
+    ),
+
+    // Post Feed
+    GetPage(
+      name: AppRoutes.PostFeed,
+      page: () => const PostFeedPage(),
+      binding: PostFeedBinding()
+    )
   ];
 }

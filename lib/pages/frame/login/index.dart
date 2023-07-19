@@ -1,4 +1,4 @@
-library index;
+library login;
 
 export './bindings.dart';
 export './controller.dart';

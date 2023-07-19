@@ -352,7 +352,7 @@ class StorePage extends GetView<StoreController> {
             ]),
           ),
         ),
-        _buildJualan(),
+            _buildJualan(),
           ],
         )
       ),

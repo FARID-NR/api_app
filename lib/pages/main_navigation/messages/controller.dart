@@ -13,7 +13,7 @@ class MessageController extends GetxController with GetSingleTickerProviderState
 
   @override
   void onInit() {
-    tab = TabController(length: 2, vsync: this);
+    tab = TabController(length: 1, vsync: this);
     super.onInit();
   }
 

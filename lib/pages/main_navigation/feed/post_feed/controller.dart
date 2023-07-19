@@ -1,0 +1,16 @@
+import 'package:api_app/common/routes/routes.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'index.dart';
+
+class PostFeedController extends GetxController{
+  PostFeedController();
+  final state = PostFeedState();
+
+  void navigationbackFeed(){
+    Get.toNamed(AppRoutes.Feed);
+  }
+
+
+}

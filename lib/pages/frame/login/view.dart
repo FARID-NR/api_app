@@ -32,7 +32,9 @@ class SignInPage extends GetView<SignInController> {
     );
   }
 
-  Widget _buildInput({String hintText = 'Email', bool obscureText = true, bool showIcon = false}){
+
+
+  Widget _buildInput({String hintText = 'Email', bool obscureText = true, bool showIcon = false, required Function(String) onChangedCallback,}){
     return Container(
       height: 40.h,
       padding: EdgeInsets.symmetric(
@@ -65,40 +67,149 @@ class SignInPage extends GetView<SignInController> {
                     color: AppColors.hintText
                    ), 
                 ),
-                
+                onChanged: onChangedCallback
               ),
             ),
           ),
-          if (showIcon)
-          IconButton(
-            icon: Icon(controller.obscureText.value 
-            ? Icons.visibility_off 
-            : Icons.visibility),
-            onPressed: () {
-              controller.passwordVisibility();
-            },
-          )
+          // if (showIcon)
+          // IconButton(
+          //   icon: Icon(controller.obscureText.value 
+          //   ? Icons.visibility_off 
+          //   : Icons.visibility),
+          //   onPressed: () {
+          //     controller.passwordVisibility();
+          //   },
+          // )
         ],
       ),
     ); 
   }
 
+  // Widget _buildEmailInput(){
+  //     return _buildInput(
+  //       hintText: 'Email',
+  //       obscureText: false,
+  //       showIcon: false,
+  //       onChangedCallback: (value){
+  //         controller.state.email.value = value;
+  //       }
+  //     );
+  // }
+
   Widget _buildEmailInput(){
-      return _buildInput(
-        hintText: 'Email',
-        obscureText: false,
-        showIcon: false
-      );
+    return Container(
+      height: 40.h,
+      padding: EdgeInsets.symmetric(
+        horizontal: 21,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: AppColors.primarySecondaryElement,
+          width: 2
+        ),
+      ),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: TextFormField(
+          style: GoogleFonts.inter(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+            color: AppColors.primaryText
+          ),
+          decoration: InputDecoration.collapsed(
+            hintText: 'Email',
+            hintStyle: GoogleFonts.inter(
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w500,
+              color: AppColors.hintText
+            ), 
+          ),
+          onChanged: (value) {
+            controller.state.email.value = value;
+          },
+        ),
+      ),
+    );
   }
 
-  Widget _buildPassInput(){
-    return Obx((){
-      return _buildInput(
-        hintText: 'Password',
-        obscureText: controller.obscureText.value,
-        showIcon: true
-      );
-    });
+  // Widget _buildPassInput(){
+  //   return Obx((){
+  //     return _buildInput(
+  //       hintText: 'Password',
+  //       obscureText: controller.obscureText.value,
+  //       showIcon: true,
+  //       onChangedCallback: (value) {
+  //         controller.state.password.value = value;
+  //       }
+  //     );
+  //   });
+  // }
+
+  Widget _buildPassInput({bool showIcon = false, bool isPassword = false}){
+    return Container(
+      height: 40.h,
+      padding: EdgeInsets.symmetric(
+        horizontal: 21,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: AppColors.primarySecondaryElement,
+          width: 2
+        ),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: TextFormField(
+                style: GoogleFonts.inter(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.primaryText
+                ),
+                obscureText: true,
+                decoration: InputDecoration.collapsed(
+                  hintText: 'Password',
+                  hintStyle: GoogleFonts.inter(
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.hintText
+                   ), 
+                ),
+                onChanged: (value) {
+                  controller.state.password.value = value;
+                },
+              ),
+            ),
+          ),
+          // if (showIcon && isPassword)
+          // IconButton(
+          //   icon: Icon(
+              // isPassword ? controller.getIconPassword() :controller.getIconPassword()
+          //   ),
+          //   onPressed: () {
+          //     if (isPassword) {
+          //       controller.passwordVisibility();
+          //     } else {
+          //       controller.newPasswordVisibility();
+          //     }
+          //   },
+          // ),
+          // if (showIcon && !isPassword)
+          // IconButton(
+          //   icon: Icon(
+          //     controller.getIconNewPassword(),
+          //   ),
+          //   onPressed: () {
+          //     controller.newPasswordVisibility();
+          //   },
+          // ),
+        ],
+      ),
+    );
   }
 
   Widget _buildLupaPass(){
@@ -123,7 +234,7 @@ class SignInPage extends GetView<SignInController> {
       width: double.infinity,
       child: TextButton(
         onPressed: () {
-          controller.navigationHome();
+          controller.handleEmailLogin();
         },
         style: TextButton.styleFrom(
           backgroundColor: AppColors.primaryElement,
@@ -157,7 +268,7 @@ class SignInPage extends GetView<SignInController> {
           ),
           GestureDetector(
             onTap: () {
-              controller.navigationRegist();
+              // controller.navigationRegist();
             },
             child: Text(
               'Daftar',

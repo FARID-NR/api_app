@@ -17,4 +17,8 @@ class HomeController extends GetxController{
     selectedIndex.value = 0;
   }
 
+  void navigationDetailKonsult(){
+    Get.toNamed(AppRoutes.DetailKonsult);
+  }
+
 }

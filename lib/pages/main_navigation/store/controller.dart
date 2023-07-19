@@ -8,4 +8,7 @@ class StoreController extends GetxController{
   StoreController();
   final state = StoreState();
 
+  void navigationDetailProduk(){
+    Get.toNamed(AppRoutes.DetailProduk);
+  }
 }

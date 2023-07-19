@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "383910778151",
+    "project_id": "nest-swallow",
+    "storage_bucket": "nest-swallow.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383910778151:android:a5dd6457f22c2319d28502",
+        "android_client_info": {
+          "package_name": "com.example.api_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "383910778151-5fq0fpo9lftof6qu8t2fvj97hqp2k187.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOWfYxsHmMco4KZ-QLW8f3mAtx0fY2bfs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "383910778151-5fq0fpo9lftof6qu8t2fvj97hqp2k187.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

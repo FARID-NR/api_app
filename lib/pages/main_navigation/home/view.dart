@@ -122,7 +122,7 @@ class HomePage extends GetView<HomeController> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'INFORMASI MENGENAI SARANG WALET',
+                'INFORMASI KONSULTAN',
                 style: GoogleFonts.inter(
                   color: Colors.white,
                   fontSize: 9,
@@ -151,17 +151,18 @@ class HomePage extends GetView<HomeController> {
       child: Scaffold(
           body: SingleChildScrollView(
             child: Container(
-                  padding: EdgeInsets.only(top: 25, right: 21, left: 21, bottom: 2),
-                  child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildSearchLon(), 
-              _buildSlider(),
-              _buildItemBuilder()
-            ],
-                  ),
-                ),
-          )),
+              padding: EdgeInsets.only(top: 25, right: 21, left: 21, bottom: 2),
+              child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildSearchLon(), 
+                _buildSlider(),  
+                _buildItemBuilder()
+               ],
+              ),
+             ),
+            )
+          ),
     );
   }
 }

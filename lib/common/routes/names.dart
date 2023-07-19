@@ -29,4 +29,15 @@ class AppRoutes {
   // Button Navigation
   static const BtnNav = '/btn-nav';
 
+  static const DetailKonsult = '/detail-konsult';
+
+  static const DetailProduk = '/detail-produk';
+
+  static const PostFeed = '/post-feed';
+
+  static const Photoimgview = '/photoimgview';
+
+  static const VoiceCall = '/voicecall';
+  static const VideoCall = '/videocall';
+
 }

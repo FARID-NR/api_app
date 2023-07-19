@@ -1,16 +1,19 @@
 import 'package:api_app/common/style/color.dart';
 import 'package:api_app/common/values/colors.dart';
+import 'package:api_app/pages/main_navigation/store/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:api_app/pages/main_navigation/store/index.dart';
 
-class ItemKategori extends StatelessWidget {
+class ItemKategori extends GetView<StoreController> {
   const ItemKategori({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        
+        controller.navigationDetailProduk();
       },
       child: Card(
         elevation: 2,

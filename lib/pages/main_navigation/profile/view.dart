@@ -167,27 +167,44 @@ class ProfilePage extends GetView<ProfileController> {
             ],
           ),
           SizedBox(height: 13),
-          Row(
-            children: [
-              Image.asset(
-                'assets/images/logout.png',
-                width: 25.w,
-              ),
-              SizedBox(width: 11),
-              Text(
-                'KELUAR',
-                style: GoogleFonts.inter(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.primaryElement
+          GestureDetector(
+            onTap: () {
+              Get.defaultDialog(
+                title: 'Apakah kamu yakin untuk keluar',
+                content: Container(),
+                onConfirm: () {
+                  controller.goLogout();
+                },
+                onCancel: () {
+                  
+                },
+                textConfirm: 'Confirm',
+                confirmTextColor: Colors.white,
+                textCancel: 'Cancel'
+              );
+            },
+            child: Row(
+              children: [
+                Image.asset(
+                  'assets/images/logout.png',
+                  width: 25.w,
                 ),
-              ),
-              Spacer(),
-              Icon(
-                Icons.arrow_forward_ios_sharp,
-                color: AppColors.primaryElement,
-              )
-            ],
+                SizedBox(width: 11),
+                Text(
+                  'KELUAR',
+                  style: GoogleFonts.inter(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w800,
+                    color: AppColors.primaryElement
+                  ),
+                ),
+                Spacer(),
+                Icon(
+                  Icons.arrow_forward_ios_sharp,
+                  color: AppColors.primaryElement,
+                )
+              ],
+            ),
           ),
         ],
       ),

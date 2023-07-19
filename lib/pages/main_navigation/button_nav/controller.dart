@@ -19,7 +19,7 @@ class MainNavbarController extends GetxController{
     'assets/images/icon_home.png',
     'assets/images/iocn_feed.png',
     'assets/images/icon_store.png',
-    'assets/images/icon_chat.png',
+    'assets/icons/consult.png',
     'assets/images/icon_profile.png',
   ];
 

@@ -60,25 +60,58 @@ class FeedPage extends GetView<FeedController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: ListView(
+        body: Stack(
           children: [
-            Padding(
-              padding: EdgeInsets.only(top: 25, right: 21, left: 21, bottom: 2),
-              child: Column(
-                children: [
-                  _buildSearchLon(),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: appFeedList.length,
-                    itemBuilder: (context, index) {
-                      return FeedUserItem(appFeedItems: appFeedList[index]);
-                    },
+            ListView(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 25, right: 21, left: 21, bottom: 2),
+                  child: Column(
+                    children: [
+                      _buildSearchLon(),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: appFeedList.length,
+                        itemBuilder: (context, index) {
+                          return FeedUserItem(appFeedItems: appFeedList[index]);
+                        },
+                      ),
+                      
+                    ],
                   ),
-                  
-                ],
-              ),
+                ),
+              ],
             ),
+            Positioned(
+              bottom: 9.h,
+              right: 16.h,
+              child: GestureDetector(
+                child: Container(
+                  width: 50.w,
+                  height: 50.w,
+                  padding: EdgeInsets.all(8.w),
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryElement,
+                    borderRadius: BorderRadius.circular(44.w),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 2,
+                        blurRadius: 2,
+                        offset: Offset(1, 1)
+                      )
+                    ]
+                  ),
+                  child: Image.asset(
+                    'assets/icons/add.png'
+                  ),
+                ),
+                onTap: () {
+                  controller.postfeed();
+                },
+              ),
+            )
           ],
         ),
       ),

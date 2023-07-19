@@ -8,4 +8,8 @@ class FeedController extends GetxController{
   FeedController();
   final state = FeedState();
 
+  void postfeed() {
+    Get.toNamed(AppRoutes.PostFeed);
+  }
+
 }
