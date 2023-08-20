@@ -96,6 +96,31 @@ class UserItem {
   };
 }
 
+class UserMes {
+  String? fullName;
+  String? email;
+  String? photo;
+  // tambahkan bidang lain yang sesuai dengan data pengguna dari Firestore
+
+  UserMes({
+    this.fullName,
+    this.email,
+    this.photo,
+    // tambahkan argumen lain yang sesuai dengan data pengguna dari Firestore
+  });
+
+  // Metode untuk mengonversi data snapshot Firestore menjadi objek User
+  factory UserMes.fromFirestore(DocumentSnapshot<Map<String, dynamic>> snapshot) {
+    final data = snapshot.data();
+    return UserMes(
+      fullName: data?['fullName'],
+      email: data?['email'],
+      photo: data?['photo'],
+      // inisialisasi bidang lain yang sesuai dengan data pengguna dari Firestore
+    );
+  }
+}
+
 class UserData {
   final String? token;
   final String? name;

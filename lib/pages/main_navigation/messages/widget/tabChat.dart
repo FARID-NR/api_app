@@ -1,9 +1,11 @@
 import 'package:api_app/common/style/color.dart';
 import 'package:api_app/common/values/colors.dart';
+import 'package:api_app/pages/main_navigation/messages/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TabChat extends StatelessWidget {
+class TabChat extends GetView<MessageController> {
   const TabChat({super.key});
 
    @override

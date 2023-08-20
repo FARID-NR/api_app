@@ -1,2 +1,2 @@
-const SERVER_API_URL = 'http://192.168.139.107:8000/';
+const SERVER_API_URL = 'http://192.168.190.107:8000/';
 const APPID = "e11666dd3c4346568b67b80823bcca50";

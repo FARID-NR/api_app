@@ -1,6 +1,8 @@
 import 'package:api_app/common/middlewares/middlewares.dart';
 import 'package:api_app/common/routes/routes.dart';
 import 'package:api_app/pages/frame/registed/index.dart';
+import 'package:api_app/pages/frame/selectedUser/bindings.dart';
+import 'package:api_app/pages/frame/selectedUser/view.dart';
 import 'package:api_app/pages/frame/splashscreen/index.dart';
 import 'package:api_app/pages/main_navigation/button_nav/index.dart';
 import 'package:api_app/pages/main_navigation/button_nav/view.dart';
@@ -32,10 +34,16 @@ class AppPages {
       binding: SplashBinding(), 
     ),
 
+    GetPage(  
+      name: AppRoutes.SelectUser, 
+      page: () => const SelectUser(),
+      binding: SelectUserBinding()
+    ),
+
     // Login
     GetPage(
       name: AppRoutes.SIGN_IN,
-      page: () => const SignInPage(),
+      page: () => const SignInPage(type: 'peternak',),
       binding: SignInBinding(), 
     ),
 
@@ -81,9 +89,7 @@ class AppPages {
       name: AppRoutes.Message,
       page: () => const MessagePage(),
       binding: MessageBinding(),
-      middlewares: [
-        RouteAuthMiddleware(priority: 0),
-      ]
+      
     ),
 
     // Profile

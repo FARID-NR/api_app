@@ -12,6 +12,7 @@ import 'index.dart';
 
 class SignInController extends GetxController{
   final state = SignInState();
+  late String typeC;
   TextEditingController? EmailEditingController = TextEditingController();
   TextEditingController? PasswordEditingController = TextEditingController();
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -98,5 +99,9 @@ class SignInController extends GetxController{
   @override
   void dispose() {
     super.dispose();
+  }
+
+  void navigationRegist(){
+    Get.toNamed(AppRoutes.Register);
   }
 }

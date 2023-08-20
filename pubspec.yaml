@@ -15,10 +15,10 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   # Screen Responsive
-  flutter_screenutil: ^5.7.0
+  flutter_screenutil: ^5.3.1
 
   # GetX
-  get: ^4.6.5
+  get: ^4.6.1
 
   # Easyloading
   flutter_easyloading: ^3.0.5
@@ -34,7 +34,7 @@ dependencies:
   flutter_linkify: ^6.0.0
   flutter_vector_icons: ^2.0.0
 
-  cloud_firestore: ^4.8.2
+  cloud_firestore: ^4.8.3
   firebase_core: ^2.15.0
   firebase_auth: ^4.7.0
 
@@ -43,21 +43,30 @@ dependencies:
 
   # Cache
   cached_network_image: ^3.2.3
-  dio: ^5.2.1+1
-  cookie_jar: ^4.0.5
-  dio_cookie_manager: ^3.1.0
+  dio: ^4.0.4
+  cookie_jar: ^3.0.1
+  dio_cookie_manager: ^2.0.0
   shared_preferences: ^2.2.0
   package_info: ^2.0.2
   firebase_messaging: ^14.6.5
-  flutter_local_notifications: ^15.1.0+1
+  flutter_local_notifications: ^13.0.0
   google_sign_in: ^6.1.4
   image_picker: ^1.0.1
+  flutter_launcher_icons: ^0.13.1
+  firebase_storage_web: ^3.6.5
+  location_web: ^4.2.0
+  uni_links_web: ^0.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/icon1.png"
 
 flutter:
   uses-material-design: true

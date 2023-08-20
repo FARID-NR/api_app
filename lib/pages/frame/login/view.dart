@@ -7,12 +7,26 @@ import 'package:google_fonts/google_fonts.dart';
 import 'index.dart';
 
 class SignInPage extends GetView<SignInController> {
-  const SignInPage({super.key});
+  final String type;
+  const SignInPage({super.key, required this.type});
 
   Widget _buildHead(){
     return Container(
       child: Text(
-        'MASUK',
+        'MASUK Peternak',
+        style: GoogleFonts.inter(
+          color: AppColors.primaryText,
+          fontWeight: FontWeight.w800,
+          fontSize: 28.sp,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeadK(){
+    return Container(
+      child: Text(
+        'MASUK Konsultan',
         style: GoogleFonts.inter(
           color: AppColors.primaryText,
           fontWeight: FontWeight.w800,
@@ -96,7 +110,7 @@ class SignInPage extends GetView<SignInController> {
   //     );
   // }
 
-  Widget _buildEmailInput(){
+  Widget _buildEmailInput(BuildContext context){
     return Container(
       height: 40.h,
       padding: EdgeInsets.symmetric(
@@ -112,6 +126,9 @@ class SignInPage extends GetView<SignInController> {
       child: Align(
         alignment: Alignment.centerLeft,
         child: TextFormField(
+          scrollPadding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom + 100,
+          ),
           style: GoogleFonts.inter(
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
@@ -146,7 +163,7 @@ class SignInPage extends GetView<SignInController> {
   //   });
   // }
 
-  Widget _buildPassInput({bool showIcon = false, bool isPassword = false}){
+  Widget _buildPassInput(BuildContext context, {bool showIcon = false, bool isPassword = false}){
     return Container(
       height: 40.h,
       padding: EdgeInsets.symmetric(
@@ -158,13 +175,16 @@ class SignInPage extends GetView<SignInController> {
           color: AppColors.primarySecondaryElement,
           width: 2
         ),
-      ),
+    ),
       child: Row(
         children: [
           Expanded(
             child: Align(
               alignment: Alignment.centerLeft,
               child: TextFormField(
+                scrollPadding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom + 100,
+                ),
                 style: GoogleFonts.inter(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
@@ -268,7 +288,7 @@ class SignInPage extends GetView<SignInController> {
           ),
           GestureDetector(
             onTap: () {
-              // controller.navigationRegist();
+              controller.navigationRegist();
             },
             child: Text(
               'Daftar',
@@ -285,28 +305,93 @@ class SignInPage extends GetView<SignInController> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignInController());
+    controller.typeC = type;
+
+    final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.primaryBackground,
-        body: SingleChildScrollView(
+        resizeToAvoidBottomInset: false,
+        body: 
+        // CustomScrollView(
+        //   slivers: [
+        //     SliverPadding(
+        //       padding: EdgeInsets.only(
+        //         // vertical: 37.w,
+        //         // horizontal: 62.w
+        //         bottom: MediaQuery.of(context).viewInsets.bottom + 100,
+        //         right: 62,
+        //         left: 62,
+        //         top: 37
+        //       ),
+        //       sliver: SliverList(
+        //         delegate: SliverChildListDelegate(
+        //           [
+        //           Container(
+        //           padding: EdgeInsets.only(top: 0.h, bottom: keyboardHeight),
+        //           // height: MediaQuery.of(context).viewInsets.bottom,
+        //           child: Column(
+        //             crossAxisAlignment: CrossAxisAlignment.start,
+        //             mainAxisSize: MainAxisSize.min,
+        //             children: [
+        //               type == "peternak" ?  _buildHead() : _buildHeadK(),
+        //               SizedBox(height: 86),
+        //               Column(
+        //                 mainAxisAlignment: MainAxisAlignment.start,
+        //                 crossAxisAlignment: CrossAxisAlignment.center,
+        //                 mainAxisSize: MainAxisSize.min,
+        //                 children: [
+        //                   _buildLogo(),
+        //                   SizedBox(height: 72),
+        //                   _buildEmailInput(context),
+        //                   SizedBox(height: 23),
+        //                   _buildPassInput(context),
+        //                   SizedBox(height: 8),
+        //                   _buildLupaPass(),
+        //                   SizedBox(height: 15),
+        //                   _buildButtonLogin(),
+        //                   SizedBox(height: 18),
+        //                   _buildFooter()
+        //                 ],
+        //               )
+                      
+        //             ],
+        //           ),
+        //         ),
+        //           ]
+        //         ),
+        //       ),
+        //     )
+        //   ],
+        // )
+        
+        
+        
+        SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
+          physics: AlwaysScrollableScrollPhysics(),
           child: Container(
             padding: EdgeInsets.symmetric(
-            vertical: 37.h,
-            horizontal: 62.w
+            vertical: 37,
+            horizontal: 62
             ),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildHead(),
+                type == "peternak" ?  _buildHead() : _buildHeadK(), 
                 SizedBox(height: 86),
                 Center(
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       _buildLogo(),
                       SizedBox(height: 72),
-                      _buildEmailInput(),
+                      _buildEmailInput(context),
                       SizedBox(height: 23),
-                      _buildPassInput(),
+                      _buildPassInput(context),
                       SizedBox(height: 8),
                       _buildLupaPass(),
                       SizedBox(height: 15),

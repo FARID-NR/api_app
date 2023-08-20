@@ -17,24 +17,20 @@ class MainNavbarController extends GetxController{
 
   List<String> listOfIcons = [
     'assets/images/icon_home.png',
-    'assets/images/iocn_feed.png',
-    'assets/images/icon_store.png',
+    // 'assets/images/iocn_feed.png',
+    // 'assets/images/icon_store.png',
     'assets/icons/consult.png',
     'assets/images/icon_profile.png',
   ];
 
   List<String> listOfStrings = [
     'Home',
-    'Feed',
-    'Store',
     'Message',
     'Profile'
   ];
 
   final List<Widget> pages = [
     HomePage(),
-    FeedPage(),
-    StorePage(),
     MessagePage(),
     ProfilePage()
   ];

@@ -475,12 +475,14 @@ class SignUpPage extends GetView<SignUpController> {
             horizontal: 62.w
             ),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildHead(),
                 SizedBox(height: 31),
                 Center(
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       _buildLogo(),
                       SizedBox(height: 71),

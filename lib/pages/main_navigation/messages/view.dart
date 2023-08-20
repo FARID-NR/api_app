@@ -1,6 +1,9 @@
+import 'package:api_app/common/utils/date.dart';
 import 'package:api_app/common/values/colors.dart';
 import 'package:api_app/pages/main_navigation/messages/widget/tabChat.dart';
 import 'package:api_app/pages/main_navigation/messages/widget/tabKonsult.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -46,111 +49,124 @@ class MessagePage extends GetView<MessageController> {
   }
 
   Widget _buildChatList(BuildContext context){
-    return Expanded(
-      child: Container(
-        height: MediaQuery.of(context).size.height * 0.77,
-        child: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context,'/chat');
-              },
-              child: Container(
-                height: 80,
-                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(
-                    color: Colors.grey.withOpacity(0.5),
-                    width: 1,
-                  ),
-                  borderRadius: BorderRadius.circular(7),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    ClipOval(
-                      child: Image.asset(
-                        'assets/images/slider.png',
-                        width: 50,
-                        height: 50,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(width: 8),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            'ChouNR',
-                            style: GoogleFonts.inter(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black,
-                            ),
-                          ),
-                          Text(
-                            'Assalamuaikum kak, Apakah produknya tersedia?',
-                            style: GoogleFonts.inter(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.textColor4,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          '25/05/2023',
-                          style: GoogleFonts.inter(
-                            fontSize: 8,
-                            color: AppColors.textColor4,
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: AppColors.primaryElement,
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          padding: EdgeInsets.symmetric(horizontal: 4),
-                          child: Text(
-                            "5",
-                            maxLines: 1,
-                            softWrap: false,
-                            style: TextStyle(
-                              fontFamily: "Avenir",
-                              fontWeight: FontWeight.normal,
-                              color: Colors.white,
-                              fontSize: 11,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            );
+    return GestureDetector(
+          onTap: () {
+
+            Navigator.pushNamed(context,'/chat');
           },
-        ),
-      ),
-    );
+          child: Container(
+            height: 80,
+            margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(
+                color: Colors.grey.withOpacity(0.5),
+                width: 1,
+              ),
+              borderRadius: BorderRadius.circular(7),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                controller.state.head_detail.value.avatar == null
+                  ? Image(
+                    image: AssetImage(
+                      'assets/images/icon_profile.png'
+                    ),
+                  )
+                : CachedNetworkImage(
+                  imageUrl: controller.state.head_detail.value.avatar!,
+                  height: 44.w,
+                  width: 44.w,              
+                  imageBuilder: (context, imageProvider) =>
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius:                        
+                      BorderRadius.all(Radius.circular(22.w)),                  
+                      image: DecorationImage( 
+                        image: imageProvider, fit: BoxFit.fill // orFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn),
+                      ),
+                    ),
+                  ),
+                  errorWidget: (context, url, error) => Image(
+                    image: AssetImage(
+                      'assets/images/icon_profile.png'
+                    ),
+                  ),
+                ),              
+                SizedBox(width: 8),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        controller.state.head_detail.value.name!,
+                        style: GoogleFonts.inter(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Text(
+                        "",
+                        style: GoogleFonts.inter(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.textColor4,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      "",// controller.state.pesan.value.last_time == null
+                      //   ? ""
+                      //   : duTimeLineFormat(
+                      //     (controller.state.pesan.value.last_time as Timestamp).toDate(),
+                      //   ),
+                      style: GoogleFonts.inter(
+                        fontSize: 8,
+                        color: AppColors.textColor4,
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryElement,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 4),
+                      child: Text(
+                        "",
+                        maxLines: 1,
+                        softWrap: false,
+                        style: TextStyle(
+                          fontFamily: "Avenir",
+                          fontWeight: FontWeight.normal,
+                          color: Colors.white,
+                          fontSize: 11,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
   }
 
   @override

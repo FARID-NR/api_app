@@ -16,6 +16,7 @@ class AppColor {
 
   // Highlight Color
   static const Color accentColor = Color(0xFF8C4303);
+  static const Color accent1Color = Color(0xFFB1A274);
 
   // Secondary Color
   static const Color secondaryColor = Color(0xFF787878);

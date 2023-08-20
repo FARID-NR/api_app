@@ -28,7 +28,7 @@ Future<void> main() async {
   Get.put<MessageController>(MessageController());
   Get.put<StoreController>(StoreController());
   Get.put<FeedController>(FeedController());
-  // Get.put<ProfileController>(ProfileController());
+  Get.put<ProfileController>(ProfileController());
 }
 
   Future firebaseInit() async {

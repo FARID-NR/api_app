@@ -9,8 +9,6 @@ class PostFeedController extends GetxController{
   final state = PostFeedState();
 
   void navigationbackFeed(){
-    Get.toNamed(AppRoutes.Feed);
+    Get.toNamed(AppRoutes.BtnNav);
   }
-
-
 }

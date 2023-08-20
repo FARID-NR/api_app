@@ -12,6 +12,6 @@ class SplashController extends GetxController{
   @override
   void onReady() {
     super.onReady();
-    Future.delayed(const Duration(seconds: 3), () => Get.offAllNamed(AppRoutes.SIGN_IN),);
+    Future.delayed(const Duration(seconds: 3), () => Get.offAllNamed(AppRoutes.BtnNav),);
   }
 }

@@ -30,6 +30,7 @@ class _MainNavbarPageState extends State<MainNavbarPage> {
       bottomNavigationBar: Container(
         margin: EdgeInsets.only(top: 5),
         height: displayWidth * .2,
+        padding: EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
           color: AppColors.primarySecondaryElement,
           boxShadow: [
@@ -41,77 +42,76 @@ class _MainNavbarPageState extends State<MainNavbarPage> {
           ],
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            for (int index = 0; index < 5; index++)
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      controller.currentIndex.value = index;
-                      HapticFeedback.lightImpact();
-                    });
-                    controller.changePage(index);
-                  },
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  child: Stack(
-                    children: [
-                      AnimatedContainer(
+            for (int index = 0; index < 3; index++)
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    controller.currentIndex.value = index;
+                    HapticFeedback.lightImpact();
+                  });
+                  controller.changePage(index);
+                },
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                child: Stack(
+                  children: [
+                    AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      curve: Curves.fastLinearToSlowEaseIn,
+                      width: index == controller.currentIndex.value
+                          ? displayWidth * .32
+                          : displayWidth * .18,
+                      alignment: Alignment.center,
+                      child: AnimatedContainer(
                         duration: Duration(seconds: 1),
                         curve: Curves.fastLinearToSlowEaseIn,
+                        height: index == controller.currentIndex.value
+                            ? displayWidth * .18
+                            : 0,
                         width: index == controller.currentIndex.value
                             ? displayWidth * .32
                             : displayWidth * .18,
+                        decoration: BoxDecoration(
+                          color: index == controller.currentIndex.value
+                              ? AppColors.primaryElement
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                    AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      curve: Curves.fastLinearToSlowEaseIn,
+                      width: index == controller.currentIndex.value
+                          ? displayWidth * .31
+                          : displayWidth * .18,
+                      // alignment: Alignment.center,
+                      child: Align(
                         alignment: Alignment.center,
-                        child: AnimatedContainer(
-                          duration: Duration(seconds: 1),
-                          curve: Curves.fastLinearToSlowEaseIn,
-                          height: index == controller.currentIndex.value
-                              ? displayWidth * .18
-                              : 0,
-                          width: index == controller.currentIndex.value
-                              ? displayWidth * .32
-                              : displayWidth * .18,
-                          decoration: BoxDecoration(
-                            color: index == controller.currentIndex.value
-                                ? AppColors.primaryElement
-                                : Colors.transparent,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                      ),
-                      AnimatedContainer(
-                        duration: Duration(seconds: 1),
-                        curve: Curves.fastLinearToSlowEaseIn,
-                        width: index == controller.currentIndex.value
-                            ? displayWidth * .31
-                            : displayWidth * .18,
-                        // alignment: Alignment.center,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Align(
-                                alignment: Alignment.center,
-                                child: Image.asset(
-                                  controller.listOfIcons[index],
-                                  width: 40,
-                                  color: index == controller.currentIndex.value
-                                      ? Colors.black
-                                      : Colors.black26,
-                                  colorBlendMode: index == controller.currentIndex.value
-                                      ? BlendMode.srcIn
-                                      : BlendMode.dst,
-                                ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Align(
+                              alignment: Alignment.center,
+                              child: Image.asset(
+                                controller.listOfIcons[index],
+                                width: 40,
+                                color: index == controller.currentIndex.value
+                                    ? Colors.black
+                                    : Colors.black26,
+                                colorBlendMode: index == controller.currentIndex.value
+                                    ? BlendMode.srcIn
+                                    : BlendMode.dst,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
           ],
